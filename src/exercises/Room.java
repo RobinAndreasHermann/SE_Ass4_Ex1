@@ -32,6 +32,9 @@ public class Room {
         return lightning;
     }
 
+    /**
+     * lists all options the current room offers.
+     */
     public void enter(){
         //as long as the user didn´t leave the room it
         do {
@@ -53,6 +56,9 @@ public class Room {
         }while(true);
     }
 
+    /**
+     * Switches the state of the light and prints the new state.
+     */
     protected void switchLight(){
         lightning = !lightning;
         if (lightning){
@@ -63,6 +69,9 @@ public class Room {
         }
     }
 
+    /**
+     * Lists all neighbours, asks for input and calls the chosen room.
+     */
     protected void enterNeighbour(){
         printNeighbours();
 
@@ -71,22 +80,21 @@ public class Room {
         neighbours.get(choice-1).enter();
     }
 
+    /**
+     * Prints the name of the current room and the option of the room.
+     */
     protected void printInitialText(){
         out.println("You are in the " + name + ".");
         out.println("What do you want to do?");
-
-
-
-        //option 1 to switch lights
-        //option 2 to leave the current room
-        //option 3 to enter neighbour room
-        //option 4 (if current room is kitchen or bathroom) switch stove/shower
 
         out.println("1) Switch light.");
         out.println("2) Leave room.");
         out.println("3) Enter neighbouring room.");
     }
 
+    /**
+     * Prints all neighbours of the current room.
+     */
     protected void printNeighbours(){
         for (int i = 1; i<=neighbours.size(); i++){
             out.print(i + ")" );
@@ -94,17 +102,22 @@ public class Room {
         }
     }
 
+    /**
+     * Checks if input <= maxChoice.
+     * @param input The users choice.
+     * @param maxChoice The max valid option the user can choose.
+     * @return True, if the input <= maxChoice. Otherwise false.
+     */
     protected boolean checkUserInput(String input, int maxChoice){
-        boolean result = false;
-
-        for (int i = 1; i<=maxChoice; i++){
-            if (Integer.parseInt(input) <= maxChoice){
-                return true;
-            }
-        }
-        return false;
+        int inputInt = Integer.parseInt(input);
+        return inputInt > 0 && inputInt <= maxChoice;
     }
 
+    /**
+     * Asks the user to choose an option, as long as he enters a valid choice.
+     * @param maxChoice The maximum choice number
+     * @return The users valid choice.
+     */
     protected String getUserInput(int maxChoice){
         Scanner scanner = new Scanner(System.in);
 
@@ -117,7 +130,7 @@ public class Room {
                 correctInput = checkUserInput(input, maxChoice);
             //catch input that is no integer
             } catch (NumberFormatException e) {
-                out.println("Please enter valid number");
+                out.println("Please enter a valid number");
             }
         }while(!correctInput);
 

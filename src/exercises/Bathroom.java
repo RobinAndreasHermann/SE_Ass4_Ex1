@@ -31,6 +31,9 @@ public class Bathroom extends Room{
         }
     }
 
+    /**
+     * lists all options the bathroom offers.
+     */
     @Override
     public void enter() {
         //as long as the user didn´t leave the room it

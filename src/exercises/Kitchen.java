@@ -30,6 +30,9 @@ public class Kitchen extends Room{
         }
     }
 
+    /**
+     * lists all options the kitchen offers.
+     */
     @Override
     public void enter() {
         //as long as the user didn´t leave the room it

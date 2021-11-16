@@ -9,6 +9,7 @@ public class Main {
         apartment1.enter();
     }
 
+    //create the recommended Apartment
     public static Apartment createApartment1(){
         Room hallway = new Room("Hallway");
         Room workroom = new Room("Workroom");

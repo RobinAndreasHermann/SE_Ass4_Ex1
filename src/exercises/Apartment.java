@@ -17,6 +17,8 @@ public class Apartment {
         //start at the enter() Method of the room hallway
         entrance.enter();
 
+        //this code is reached if the Hallway is left
+        //printing the warnings
         for (Room r : rooms){
             if (r.getLightning()){
                 out.println("WARNING: Light in the " + r.getName() + " is still on!");
